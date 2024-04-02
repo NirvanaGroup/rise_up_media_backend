@@ -17,8 +17,37 @@ export class EventsService {
     return newEvent.save();
   }
 
-  getEvents() {
-    return this.eventModel.find().populate('pdfs');
+  getTodayEvents() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1; // Month is zero-based, so we add 1
+    const day = today.getDate();
+
+    const formattedDate = `${year}-${month < 10 ? '0' : ''}${month}-${day < 10 ? '0' : ''}${day}`;
+    console.log(formattedDate);
+    return this.eventModel
+      .find({
+        date: formattedDate,
+      })
+      .populate('pdfs');
+  }
+
+  getUpcomingEvents() {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = today.getMonth() + 1; // Month is zero-based, so we add 1
+    const day = today.getDate();
+
+    const formattedDate = `${year}-${month < 10 ? '0' : ''}${month}-${day < 10 ? '0' : ''}${day}`;
+    console.log(formattedDate);
+    return this.eventModel
+      .find({
+        date: {
+          $gte: formattedDate, // Greater than or equal to today
+          $ne: formattedDate, // Not equal to today
+        },
+      })
+      .populate('pdfs');
   }
 
   getEventById(id: string) {

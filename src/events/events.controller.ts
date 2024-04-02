@@ -22,12 +22,12 @@ export class EventsController {
     return this.eventsService.createEvent(createEventDto);
   }
 
-  @Get()
+  @Get('today')
   getEvent() {
-    return this.eventsService.getEvents();
+    return this.eventsService.getTodayEvents();
   }
 
-  @Get(':id')
+  @Get('id/:id')
   async getEventById(@Param('id') id: string) {
     const isValid = mongoose.Types.ObjectId.isValid(id);
     if (!isValid) throw new HttpException('Invalid ID', HttpStatus.BAD_REQUEST);
@@ -51,6 +51,11 @@ export class EventsController {
         HttpStatus.NOT_FOUND,
       );
     return events;
+  }
+
+  @Get('upcoming')
+  async getUpcomingEvents() {
+    return await this.eventsService.getUpcomingEvents();
   }
 
   @Patch(':id')
