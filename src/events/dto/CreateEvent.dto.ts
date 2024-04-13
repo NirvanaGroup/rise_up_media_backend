@@ -26,5 +26,6 @@ export class CreateEventDto {
   links: string[];
 
   @IsArray()
+  @IsOptional()
   pdfs?: string[];
 }

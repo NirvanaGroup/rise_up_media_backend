@@ -10,7 +10,7 @@ export class Event {
   title: string;
 
   @Prop()
-  sort_description: string;
+  short_description: string;
 
   @Prop()
   long_description: string;
