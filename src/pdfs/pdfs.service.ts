@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Pdf } from './../../src/schemas/pdf.schema';
+import { Pdf } from '../../src/schemas/pdf.schema';
 import { CreatePdfDto } from './dto/CreatePdf.dto';
 import { UpdatePdfDto } from './dto/UpdatePdf.dto';
 

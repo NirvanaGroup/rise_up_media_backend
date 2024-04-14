@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Event } from './../../src/schemas/Event.schema';
+import { Event } from '../../src/schemas/Event.schema';
 import { CreateEventDto } from './dto/CreateEvent.dto';
 import { UpdateEventDto } from './dto/UpdateEvent.dto';
-import { Pdf } from './../../src/schemas/pdf.schema';
+import { Pdf } from '../../src/schemas/pdf.schema';
 
 @Injectable()
 export class EventsService {
