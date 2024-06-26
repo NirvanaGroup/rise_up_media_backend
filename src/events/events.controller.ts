@@ -58,6 +58,11 @@ export class EventsController {
     return await this.eventsService.getUpcomingEvents();
   }
 
+    @Get('all')
+  async getAllEvents() {
+    return await this.eventsService.getAllEvents();
+  }
+
   @Patch(':id')
   async updateEvent(
     @Param('id') id: string,

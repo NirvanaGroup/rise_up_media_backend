@@ -50,6 +50,10 @@ export class EventsService {
       .populate('pdfs');
   }
 
+  getAllEvents() {
+    return this.eventModel.find().populate('pdfs');
+  }
+
   getEventById(id: string) {
     return this.eventModel.findById(id).populate('pdfs');
   }
