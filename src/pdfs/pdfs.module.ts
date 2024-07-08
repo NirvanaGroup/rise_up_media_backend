@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Pdf, PdfSchema } from '../schemas/pdf.schema';
 import { PdfsController } from './pdfs.controller';
+import { PdfResolver } from './pdfs.resolver';
 import { PdfsService } from './pdfs.service';
 
 @Module({
@@ -14,6 +15,6 @@ import { PdfsService } from './pdfs.service';
     ]),
   ],
   controllers: [PdfsController],
-  providers: [PdfsService],
+  providers: [PdfsService, PdfResolver],
 })
 export class PdfsModule {}

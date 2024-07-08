@@ -1,0 +1,31 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Pdf {
+  _id: ID!
+  name: String!
+  size: String!
+  link: String!
+}
+
+type Event {
+  _id: ID!
+  banner_link: String
+  title: String!
+  short_description: String!
+  long_description: String!
+  date: String!
+  links: [String!]
+  pdfs: [Pdf!]
+}
+
+type Query {
+  getTodayEvents: [Event!]!
+  getEventById(id: String!): Event!
+  getEventByDate(date: String!): [Event!]!
+  getUpcomingEvents: [Event!]!
+  getAllEvents: [Event!]!
+  getPdfs: [Pdf!]!
+  getPdfById(id: String!): Pdf!
+}

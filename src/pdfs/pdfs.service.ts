@@ -1,3 +1,4 @@
+
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -9,24 +10,32 @@ import { UpdatePdfDto } from './dto/UpdatePdf.dto';
 export class PdfsService {
   constructor(@InjectModel(Pdf.name) private pdfModel: Model<Pdf>) {}
 
-  createPdf(createPdfDto: CreatePdfDto) {
+  async createPdf(createPdfDto: CreatePdfDto): Promise<Pdf> {
     const newPdf = new this.pdfModel(createPdfDto);
     return newPdf.save();
   }
 
-  getPdfs() {
-    return this.pdfModel.find();
+  async createPdfs(createPdfDtos: CreatePdfDto[]): Promise<Pdf[]> {
+    return await this.pdfModel.insertMany(createPdfDtos);
   }
 
-  updatePdf(id: string, updatePdfDto: UpdatePdfDto) {
-    return this.pdfModel.findByIdAndUpdate(id, updatePdfDto);
+  getPdfs() {
+    return this.pdfModel.find().exec();
   }
 
   getPdfById(id: string) {
-    return this.pdfModel.findById(id);
+    return this.pdfModel.findById(id).exec();
+  }
+
+  updatePdf(id: string, updatePdfDto: UpdatePdfDto) {
+    return this.pdfModel
+      .findByIdAndUpdate(id, updatePdfDto, { new: true })
+      .exec();
   }
 
   deletePdf(id: string) {
-    return this.pdfModel.findByIdAndDelete(id);
+    return this.pdfModel.findByIdAndDelete(id).exec();
   }
 }
+
+

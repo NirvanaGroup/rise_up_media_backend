@@ -16,11 +16,11 @@ import mongoose from 'mongoose';
 
 @Controller('pdfs')
 export class PdfsController {
-  constructor(private pdfsService: PdfsService) {}
+  constructor(private readonly pdfsService: PdfsService) {}
 
   @Post()
-  createPdf(@Body() createPdfDto: CreatePdfDto) {
-    return this.pdfsService.createPdf(createPdfDto);
+  async createPdfs(@Body() createPdfDtos: CreatePdfDto[]) {
+    return await this.pdfsService.createPdfs(createPdfDtos);
   }
 
   @Get()
