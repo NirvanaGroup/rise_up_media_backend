@@ -44,10 +44,6 @@ export class EventsService {
       .exec();
   }
 
-  getAllEvents() {
-    return this.eventModel.find().populate('pdfs');
-  }
-
   getEventById(id: string) {
     return this.eventModel
       .findById(id)
