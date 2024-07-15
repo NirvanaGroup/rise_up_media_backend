@@ -1,15 +1,16 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreatePdfDto {
-  @IsString()
   @IsNotEmpty()
+  @IsString()
   name: string;
 
-  @IsString()
   @IsNotEmpty()
-  link: string;
-
   @IsString()
-  @IsNotEmpty()
   size: string;
+  
+  @IsNotEmpty()
+  @IsString()
+  link: string;
 }
+
