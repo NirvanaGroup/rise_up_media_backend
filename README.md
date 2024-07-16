@@ -74,6 +74,9 @@ To start the application in development mode with live reload:
 ```bash
 npm run start:dev
 
+### Accessing Graphql.
+1. In browser type localhost:3000/graphql. This will open graphql interface to query the database.
+
 ## License
 
 Nest is [MIT licensed](LICENSE).
