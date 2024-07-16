@@ -22,51 +22,57 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+# Rise Up Media Backend
+
+## Overview
+
+This is the backend of the Rise Up Media application. It is built using NestJS, a progressive Node.js framework for building efficient, reliable, and scalable server-side applications. The project leverages TypeScript, MongoDB with Mongoose, TypeORM, and GraphQL.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Running the Application](#running-the-application)
+- [Scripts](#scripts)
+- [Testing](#testing)
+- [License](#license)
+
+## Features
+
+- **NestJS**: Utilizes NestJS for a robust application structure.
+- **GraphQL**: API interactions through GraphQL.
+- **MongoDB**: Uses Mongoose for MongoDB interactions.
+- **TypeORM**: Provides a TypeScript ORM for SQL databases.
+- **TypeScript**: Written entirely in TypeScript for type safety and enhanced development experience.
+- **Testing**: Comprehensive testing setup using Jest.
 
 ## Installation
 
+1. Clone the repository:
+
+    ```bash
+    git clone <repository-url>
+    cd rise_up_media_backend
+    ```
+
+2. Install the dependencies:
+
+    ```bash
+    npm install
+    ```
+
+3. Create a `.env` file in the root of the project and set the required environment variables.
+
+## Running the Application
+
+### Development
+
+To start the application in development mode with live reload:
+
 ```bash
-$ pnpm install
-```
-
-## Running the app
-
-```bash
-# development
-$ pnpm run start
-
-# watch mode
-$ pnpm run start:dev
-
-# production mode
-$ pnpm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ pnpm run test
-
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+npm run start:dev
 
 ## License
 
