@@ -1,7 +1,7 @@
 
 import { Resolver, Query, Args } from '@nestjs/graphql';
 import { EventsService } from './events.service';
-import { Event } from '../schemas/event.schema';
+import { Event } from './../schemas/Event.schema';
 
 @Resolver(() => Event)
 export class EventsResolver {

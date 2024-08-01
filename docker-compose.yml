@@ -1,0 +1,113 @@
+#Keep this file outside Node-app like directory structure below:
+# Code
+#     - Docker Compose
+#          - docker-compose.yml
+version: '3.9'
+
+networks:
+  # storage-network:
+  #   driver: bridge
+  db-network:
+    driver: bridge
+  # frontend-network:
+  #   driver: bridge
+
+services:
+  mongodb:
+    container_name: mongodb_db
+    image: mongo:latest
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      MONGODB_PASSWORD: root
+      MONGODB_DB: riseUpMedia
+      PGDATA: /data/db
+    volumes:
+      - ./data:/data/db
+    networks:
+      - db-network
+  
+  # adminer:
+  #   container_name: adminer
+  #   image: adminer
+  #   restart: always
+  #   ports:
+  #     - 8082:3080
+  #   networks:
+  #     - db-network
+
+  api:
+    container_name: rise_up_media_backend
+    build: 
+      context: ../rise_up_media_backend/
+      dockerfile: Dockerfile
+    ports:
+    - 8080:8080
+    depends_on:
+        - mongodb
+    restart: on-failure
+    # volumes:
+    #   - ../commissions-node-app/:/app/
+    #   - /app/node_modules
+    networks:
+      # - storage-network
+      - db-network
+      # - frontend-network
+    # command: sh -c "cd src && npx sequelize db:migrate && npx sequelize db:seed:all && npm start"
+    environment:
+      # Port
+      PORT: 8080
+
+      # Debug
+      # LOG_LEVEL: debug
+
+      # JSON web token (JWT) secret: this keeps our app's user authentication secure
+      # This secret should be a random 20-ish character string
+      # JWT_SECRET: p4sta.w1th-t0m@t0-s@uce
+      # JWT_ALGO: RS256
+
+      # DB_USERNAME: postgres
+      # DB_PASSWORD: root
+      # DB_NAME: commissions2
+      # DB_HOSTNAME: postgres_db
+      # DB_PORT: 5432
+      # NODE_ENV: development
+      # ENABLE_FAKE_GCS: 'true'
+      # GCS_BUCKET_NAME: 'vf-scmuat-ca-live-commissions-frontend-dev'
+      # # NODE_APP_API_SERVER: http://localhost:8080
+      # latest_key_name: 'key_1659541536'
+      # key_1659541536: 'GhAem6yhxOczlAJV7qDXfdq/'
+      # key_1656855809: 'GiBCM7t9FhDviFJ0R+sRMaNFb8yr6e3Wyns/G5RQcMScRQ=='
+  
+  # client:
+  #   container_name: react_app
+  #   build: 
+  #     context: ../commissions-react-app/
+  #     dockerfile: Dockerfile.local
+  #     args: 
+  #       - REACT_APP_API_SERVER=http://localhost:8080
+  #       - REACT_APP_NODE_ENV='development'
+  #   environment:
+  #     CHOKIDAR_USEPOLLING: "true"
+  #   ports:
+  #     - 8081:8081
+  #   stdin_open: true
+  #   volumes:
+  #     - ../commissions-react-app/src:/app/src
+  #     - ../commissions-react-app/public:/app/public
+  #     - /app/node_modules
+  #   networks:
+  #     - frontend-network
+  
+  # storage:
+  #   container_name: fake-gcs-server
+  #   image: fsouza/fake-gcs-server
+  #   restart: always
+  #   ports:
+  #     - 8083:8083
+  #   volumes:
+  #     - ./gcs_bucket:/storage
+  #   command: ["-scheme", "http", "-port", "8083", "-external-url", "http://storage:8083"]
+  #   networks:
+  #     - storage-network

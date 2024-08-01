@@ -75,7 +75,7 @@ To start the application in development mode with live reload:
 npm run start:dev
 
 ### Accessing Graphql.
-1. In browser type localhost:3000/graphql. This will open graphql interface to query the database.
+1. In browser type localhost:8080/graphql. This will open graphql interface to query the database.
 
 ## License
 
