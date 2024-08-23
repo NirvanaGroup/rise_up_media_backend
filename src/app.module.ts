@@ -8,7 +8,7 @@ import { join } from 'path';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://mongodb:27017/riseUpMedia'),
+    MongooseModule.forRoot('mongodb://127.0.0.1:27017/riseUpMedia'),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
