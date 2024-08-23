@@ -63,8 +63,6 @@ This is the backend of the Rise Up Media application. It is built using NestJS, 
     npm install
     ```
 
-3. Create a `.env` file in the root of the project and set the required environment variables.
-
 ## Running the Application
 
 ### Development
@@ -75,7 +73,16 @@ To start the application in development mode with live reload:
 npm run start:dev
 
 ### Accessing Graphql.
-1. In browser type localhost:8080/graphql. This will open graphql interface to query the database.
+1. In browser type localhost:3000/graphql. This will open graphql interface to query the database.
+
+```
+
+### Docker
+
+1. replace the port from 3000 to 8080 in the main.ts file.
+2. replace the mongodb port from mongodb://127.0.0.1:27017/riseUpMedia to mongodb://mongodb:27017/riseUpMedia.
+
+3. 
 
 ## License
 
