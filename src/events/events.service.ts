@@ -19,23 +19,41 @@ export class EventsService {
     return newEvent.save();
   }
 
+  // getTodayEvents() {
+  //   const today = new Date();
+  //   console.log('today:',today);
+  //   const formattedDate = today.toISOString().split('T')[0];
+  //   return this.eventModel
+  //     .find({ date: formattedDate })
+  //     .populate('pdfs')
+  //     .exec();
+  // }
+
   getTodayEvents() {
+    // Get the local date
     const today = new Date();
-    const formattedDate = today.toISOString().split('T')[0];
+    // Get the local date in YYYY-MM-DD format
+    const localDate = today.toLocaleDateString('en-CA'); // 'en-CA' format is YYYY-MM-DD
+    console.log('Local Date:', localDate);
+  
+    // Query for the local date
     return this.eventModel
-      .find({ date: formattedDate })
+      .find({ date: localDate })
       .populate('pdfs')
       .exec();
   }
+  
 
   getUpcomingEvents() {
     const today = new Date();
-    const formattedDate = today.toISOString().split('T')[0];
+   // const formattedDate = today.toISOString().split('T')[0];
+   const formattedDate = today.toLocaleDateString('en-CA');
     return this.eventModel
       .find({ date: { $gt: formattedDate } })
       .populate('pdfs')
       .exec();
   }
+
 
   getAllEvents() {
     return this.eventModel

@@ -28,4 +28,8 @@ export class UpdateEventDto {
   @IsOptional()
   @IsArray()
   pdfs: string[];
+
+  @IsArray()
+  @IsOptional()
+  hashtag: string[];
 }

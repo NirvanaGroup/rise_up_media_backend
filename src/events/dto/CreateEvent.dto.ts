@@ -28,4 +28,8 @@ export class CreateEventDto {
   @IsArray()
   @IsOptional()
   pdfs?: string[];
+
+  @IsArray()
+  @IsOptional()
+  hashtag: string[];
 }

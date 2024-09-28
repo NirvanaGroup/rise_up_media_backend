@@ -17,6 +17,7 @@ type Event {
   long_description: String!
   date: String!
   links: [String!]
+  hashtag: [String!]
   pdfs: [Pdf!]
 }
 

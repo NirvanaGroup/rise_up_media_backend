@@ -1,5 +1,5 @@
 
-import { Resolver, Query, Args } from '@nestjs/graphql';
+import { Resolver, Query, Args} from '@nestjs/graphql';
 import { EventsService } from './events.service';
 import { Event } from './../schemas/Event.schema';
 
@@ -8,7 +8,7 @@ export class EventsResolver {
   constructor(private readonly eventsService: EventsService) {}
 
   @Query(() => [Event])
-  getTodayEvents() {
+  getTodayEvents() { 
     return this.eventsService.getTodayEvents();
   }
 
@@ -31,5 +31,7 @@ export class EventsResolver {
   getAllEvents() {
     return this.eventsService.getAllEvents();
   }
+
+
 }
 

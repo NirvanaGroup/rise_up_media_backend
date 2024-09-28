@@ -35,6 +35,10 @@ export class Event extends Document {
   @Prop([String])
   links: string[];
 
+  @Field(()=>[String],{nullable: true})
+  @Prop([String])
+  hashtag: string[];
+
   @Field(() => [Pdf], { nullable: true })
   @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Pdf' }] })
   pdfs?: Pdf[];
