@@ -60,7 +60,7 @@ This is the backend of the Rise Up Media application. It is built using NestJS, 
 2. Install the dependencies:
 
     ```bash
-    npm install
+    npm install --legacy-peer-deps
     ```
 
 ## Running the Application
@@ -81,8 +81,7 @@ npm run start:dev
 
 1. replace the port from 3000 to 8080 in the main.ts file.
 2. replace the mongodb port from mongodb://127.0.0.1:27017/riseUpMedia to mongodb://mongodb:27017/riseUpMedia.
-
-3. 
+3. docker-compose up --build
 
 ## License
 
