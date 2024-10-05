@@ -19,16 +19,7 @@ export class EventsService {
     return newEvent.save();
   }
 
-  // getTodayEvents() {
-  //   const today = new Date();
-  //   console.log('today:',today);
-  //   const formattedDate = today.toISOString().split('T')[0];
-  //   return this.eventModel
-  //     .find({ date: formattedDate })
-  //     .populate('pdfs')
-  //     .exec();
-  // }
-
+ 
   getTodayEvents() {
     // Get the local date
     const today = new Date();
@@ -86,6 +77,22 @@ export class EventsService {
   deleteEvent(id: string) {
     return this.eventModel
       .findByIdAndDelete(id)
+      .exec();
+  }
+  // New method to fetch events for a specific month and year
+  async fetchEventsForMonth(month: number, year: number) {
+    // Create the start and end date for the specified month and year
+    const startDate = new Date(year, month - 1, 1); // First day of the month
+    const endDate = new Date(year, month, 0); // Last day of the month
+
+    return this.eventModel
+      .find({
+        date: {
+          $gte: startDate.toISOString().split('T')[0], // Convert to YYYY-MM-DD format
+          $lte: endDate.toISOString().split('T')[0],
+        },
+      })
+      .populate('pdfs')
       .exec();
   }
 }

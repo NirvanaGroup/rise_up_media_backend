@@ -79,7 +79,7 @@ npm run start:dev
 
 ### Docker
 
-1. replace the port from 3000 to 8080 in the main.ts file.
+1. replace the port from 3000 to 8080 in the main.ts file. (This change is required to set localhost:8080 as default port to run rise_up_media_backend docker project in host machine, it will not affect the localhost running server).
 2. replace the mongodb port from mongodb://127.0.0.1:27017/riseUpMedia to mongodb://mongodb:27017/riseUpMedia.
 3. docker-compose up --build.
 
