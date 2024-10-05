@@ -2,6 +2,7 @@
 import { Resolver, Query, Args} from '@nestjs/graphql';
 import { EventsService } from './events.service';
 import { Event } from './../schemas/Event.schema';
+import { Int } from 'type-graphql';
 
 @Resolver(() => Event)
 export class EventsResolver {
@@ -32,6 +33,14 @@ export class EventsResolver {
     return this.eventsService.getAllEvents();
   }
 
+  @Query(() => [Event])
+  fetchEventsForMonth(
+    @Args('month', { type: () => Int }) month: number,  // Ensure you're using Int
+    @Args('year', { type: () => Int }) year: number,    // Ensure you're using Int
+  ) {
+    return this.eventsService.fetchEventsForMonth(month, year);
+  }
+  
 
 }
 

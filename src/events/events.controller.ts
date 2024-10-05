@@ -53,6 +53,28 @@ export class EventsController {
     return events;
   }
 
+  @Get('month/:month/year/:year')
+  async fetchEventsForMonth(
+    @Param('month') month: string,
+    @Param('year') year: string,
+  ) {
+    const monthNum = parseInt(month, 10);
+    const yearNum = parseInt(year, 10);
+
+    if (isNaN(monthNum) || isNaN(yearNum)) {
+      throw new HttpException('Invalid month or year', HttpStatus.BAD_REQUEST);
+    }
+
+    const events = await this.eventsService.fetchEventsForMonth(monthNum, yearNum);
+    if (!events || events.length === 0)
+      throw new HttpException(
+        `No events found for month ${month} and year ${year}`,
+        HttpStatus.NOT_FOUND,
+      );
+
+    return events;
+  }
+
   @Get('upcoming')
   async getUpcomingEvents() {
     return await this.eventsService.getUpcomingEvents();

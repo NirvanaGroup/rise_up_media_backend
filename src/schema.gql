@@ -27,6 +27,7 @@ type Query {
   getEventByDate(date: String!): [Event!]!
   getUpcomingEvents: [Event!]!
   getAllEvents: [Event!]!
+  fetchEventsForMonth(month: Int!, year: Int!): [Event!]!
   getPdfs: [Pdf!]!
   getPdfById(id: String!): Pdf!
 }
